@@ -1,0 +1,95 @@
+> mongoimport --db test --type json --collection emails --file ~/Desktop/enron.json
+
+$ mongo
+> db.emails.count()
+#5929
+
+> db.emails.find( { sender: { $regex: /enron.com$/ } } ).count()
+#2436
+
+> db.emails.find( { subject: { $regex: /^FW:/ } } )
+
+> db.emails.find( { subject: { $regex: /^FW:/ } } ).explain()
+{
+  ...
+	"millis" : 10,
+  ...
+}
+
+> db.emails.createIndex( { subject: 1 })
+> db.emails.find( { subject: { $regex: /^FW:/ } } ).explain()
+{
+	...
+	"millis" : 1,
+	...
+}
+
+> db.emails.find( { recipients:'rosalee.fleming@enron.com' }, { date:true, sender:true, subject:true, _id:false } )
+
+> db.emails.update({}, { $pull: { recipients: 'lizard_ar@yahoo.com' } }, {multi: true})
+
+> db.emails.update({ sender: 'rosalee.fleming@enron.com' }, { $push: { recipients: 'rob.bradley@enron.com' } }, {multi: true})
+
+> db.zips.find({state: {$in: ['CA','LA'] }}).sort({pop: -1}).limit(10)
+
+> db.zips.find({state: {$in: ['CA','LA'] }}).sort({pop: -1}).skip(10).limit(10)
+
+> db.zips.update({}, {$set: {country:'USA'} }, {multi:true})
+
+> db.zips.find({ pop: { $gt: 100000 }, "loc.0": { $lt: -110.0 } })
+
+> db.zips.createIndex({loc: '2dsphere'})
+> db.zips.find({ loc: {$near: [-73.996705, 40.74838]} }).limit(5)
+{ "_id" : "10001", "city" : "NEW YORK", "loc" : [ -73.996705, 40.74838 ], "pop" : 18913, "state" : "NY", "country" : "USA" }
+{ "_id" : "10018", "city" : "NEW YORK", "loc" : [ -73.992503, 40.754713 ], "pop" : 4834, "state" : "NY", "country" : "USA" }
+{ "_id" : "10011", "city" : "NEW YORK", "loc" : [ -73.99963, 40.740225 ], "pop" : 46560, "state" : "NY", "country" : "USA" }
+{ "_id" : "10036", "city" : "NEW YORK", "loc" : [ -73.991826, 40.759724 ], "pop" : 16748, "state" : "NY", "country" : "USA" }
+{ "_id" : "10014", "city" : "NEW YORK", "loc" : [ -74.005421, 40.73393 ], "pop" : 31147, "state" : "NY", "country" : "USA" }
+
+> db.zips.distinct('city', { loc: { $near: { $geometry: { type:"Point", coordinates: [-73.996705, 40.74838] }, $maxDistance: 5000 } } })
+[
+	"NEW YORK",
+	"HOBOKEN",
+	"WEEHAWKEN",
+	"JERSEY CITY",
+	"BROOKLYN",
+	"GUTTENBERG",
+	"ASTORIA"
+]
+
+> db.zips.aggregate([{ $group:{_id:"$city", totalPop: { $sum: "$pop" }} }, {$match: {totalPop: {$gt: 500000}}}])
+{ "_id" : "LOS ANGELES", "totalPop" : 2102295 }
+{ "_id" : "MILWAUKEE", "totalPop" : 597324 }
+{ "_id" : "BRONX", "totalPop" : 1209548 }
+{ "_id" : "LAS VEGAS", "totalPop" : 617124 }
+{ "_id" : "SAN ANTONIO", "totalPop" : 813188 }
+{ "_id" : "SAN DIEGO", "totalPop" : 1054316 }
+{ "_id" : "BALTIMORE", "totalPop" : 738846 }
+{ "_id" : "NEW YORK", "totalPop" : 1476790 }
+{ "_id" : "SAN FRANCISCO", "totalPop" : 723993 }
+{ "_id" : "PORTLAND", "totalPop" : 646119 }
+{ "_id" : "HOUSTON", "totalPop" : 2123053 }
+{ "_id" : "MEMPHIS", "totalPop" : 643495 }
+{ "_id" : "SPRINGFIELD", "totalPop" : 639513 }
+{ "_id" : "ROCHESTER", "totalPop" : 523643 }
+{ "_id" : "DETROIT", "totalPop" : 967468 }
+{ "_id" : "COLUMBIA", "totalPop" : 546055 }
+{ "_id" : "COLUMBUS", "totalPop" : 825448 }
+{ "_id" : "EL PASO", "totalPop" : 515269 }
+{ "_id" : "ATLANTA", "totalPop" : 630046 }
+{ "_id" : "AUSTIN", "totalPop" : 570985 }
+{ "_id" : "NEWARK", "totalPop" : 504651 }
+{ "_id" : "PHOENIX", "totalPop" : 902249 }
+{ "_id" : "MIAMI", "totalPop" : 848436 }
+{ "_id" : "BROOKLYN", "totalPop" : 2341387 }
+{ "_id" : "ARLINGTON", "totalPop" : 575938 }
+{ "_id" : "DALLAS", "totalPop" : 999042 }
+{ "_id" : "SACRAMENTO", "totalPop" : 629960 }
+{ "_id" : "CLEVELAND", "totalPop" : 687451 }
+{ "_id" : "TUCSON", "totalPop" : 586451 }
+{ "_id" : "SAN JOSE", "totalPop" : 817497 }
+{ "_id" : "SEATTLE", "totalPop" : 520096 }
+{ "_id" : "WASHINGTON", "totalPop" : 780954 }
+{ "_id" : "JACKSONVILLE", "totalPop" : 735505 }
+{ "_id" : "PHILADELPHIA", "totalPop" : 1639862 }
+{ "_id" : "CHICAGO", "totalPop" : 2452177 }
