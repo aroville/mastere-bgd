@@ -9,7 +9,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
-from sklearn import neighbors, cross_validation
+from sklearn import neighbors, model_selection
 import seaborn as sns
 from matplotlib.colors import ListedColormap
 import pylab as pl

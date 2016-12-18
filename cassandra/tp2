@@ -1,0 +1,309 @@
+  2  sc.getConf
+  3  sc.getConf.toDebugString
+  4  val myNumbers= List(1,2,3,4,5,6,7,8)
+  5  def cube(a:Int):Int = a*a*a
+  6  myNumbers.map(cube)
+  7  myNumbers.map(x => x*x*x)
+  8  def even(a:Int) = a%2
+  9  def even(a:Int) = a%2 ==0
+ 10  myNumbers.map(even)
+ 11  myNumbers.map(even(_))
+ 12  myNumbers.foldLeft
+ 13  myNumbers.foldLeft(0)(_+_)
+ 14  val data = 1 to 1000
+ 15  data.filter( x=> x%2==0 && x%13==0)
+ 16  val paralelizedData = sc.parallelize(data,10)
+ 17  val parFilter = paralelizedData.filter(x=> x%2==0 && x%13==0)
+ 18  parFilter.collect
+ 19   val parDataCached = sc.parallelize(1 to 1000).filter(_%2==0).cache
+ 20   parDataCached.fold(0)(_+_)
+ 21   parDataCached.fold(1)(_*_)
+ 22   parDataCached.fold(1)(x=> Long(_*_))
+ 23   parDataCached.fold(1)(x=> (Long)_*_)
+ 24   parDataCached.fold(1)(x=> ((Long)_*_))
+ 25   parDataCached.fold(1)((x,y)=> ((Long)x*y))
+ 26   parDataCached.fold(1)((x,y)=> ((Long)x * y))
+ 27   parDataCached.fold(1)((x,y)=> ((Long) x  * (Long) y))
+ 28   parDataCached.fold(1)((x,y)=> (((Long) x ) * ((Long) y)))
+ 29  quit
+ 30  sc
+ 31  sc.getConf.toDebugString
+ 32  val myNumbers = List(1, 2, 5, 4, 7, 3)
+ 33  val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+ 34  import sqlContext._
+ 35  case class Person(name: String, age: Int)
+ 36  val people = sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/examples/src/main/resources/people.txt").map(_.split(",")).map(p => Person(p(0), p(1).trim.toInt))
+ 37  people.registerAsTable("people")
+ 38  val people = sqlContext.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/examples/src/main/resources/people.txt").map(_.split(",")).map(p => Person(p(0), p(1).trim.toInt))
+ 39  val people = sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/examples/src/main/resources/people.txt").map(_.split(",")).map(p => Person(p(0), p(1).trim.toInt))
+ 40  val people = sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/examples/src/main/resources/people.txt").map(_.split(",")).map(p => Person(p(0), p(1).trim.toInt)).toDF
+ 41  people.createOrReplaceTempView("people")
+ 42  val teenagers = sql("select * from people")
+ 43  val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+ 44  case class Person(name: String, age: Int)
+ 45  val people = sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/examples/src/main/resources/people.txt").map(_.split(",")).map(p => Person(p(0), p(1).trim.toInt)).toDF
+ 46  people.createOrReplaceTempView("people")
+ 47  val teenagers = sql("SELECT * from people;")
+ 48  val teenagers = sql("SELECT * from people")
+ 49  teenagers.show
+ 50  sc.stop
+ 51  import com.datastax.spark.connector._
+ 52  import org.apache.spark.SparkContext
+ 53  import org.apache.spark.SparkContext._
+ 54  import org.apache.spark.SparkConf
+ 55  import com.datastax.spark.connector.cql.CassandraConnector
+ 56  val conf = new SparkConf(true).set("spark.cassandra.connection.host", "127.0.0.1")
+ 57  val sc = new SparkContext("spark://127.0.0.1:7077", "test", conf)
+ 58  sc.stop
+ 59  import com.datastax.spark.connector._
+ 60  import org.apache.spark.SparkContext
+ 61  import org.apache.spark.SparkContext._
+ 62  import org.apache.spark.SparkConf
+ 63   import com.datastax.spark.connector.cql.CassandraConnector
+ 64  val conf = new SparkConf(true).set("spark.cassandra.connection.host", "127.0.0.1")
+ 65   val sc = new SparkContext("spark://127.0.0.1:7077", "test", conf)
+ 66  :paste
+ 67  scala> sc.stop
+ 68  scala> import com.datastax.spark.connector._
+ 69  scala> import org.apache.spark.SparkContext
+ 70  scala> import org.apache.spark.SparkContext._
+ 71  scala> import org.apache.spark.SparkConf
+ 72  scala> import com.datastax.spark.connector.cql.CassandraConnector
+ 73  scala> val conf = new SparkConf(true).set("spark.cassandra.connection.host", "127.0.0.1")
+ 74  scala> val sc = new SparkContext("spark://127.0.0.1:7077", "test", conf)
+ 75  scala> :paste
+ 76  scala> CassandraConnector(conf).withSessionDo { session =>
+ 77      session.execute(s"CREATE KEYSPACE IF NOT EXISTS demo WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1 }")
+ 78      session.execute(s"CREATE TABLE IF NOT EXISTS demo.wordcount (word TEXT PRIMARY KEY, count COUNTER)")
+ 79      session.execute(s"TRUNCATE demo.wordcount")
+ 80    }
+ 81  :paste
+ 82  scala> sc.stop
+ 83  scala> import com.datastax.spark.connector._
+ 84  scala> import org.apache.spark.SparkContext
+ 85  scala> import org.apache.spark.SparkContext._
+ 86  scala> import org.apache.spark.SparkConf
+ 87  scala> import com.datastax.spark.connector.cql.CassandraConnector
+ 88  scala> val conf = new SparkConf(true).set("spark.cassandra.connection.host", "127.0.0.1")
+ 89  scala> val sc = new SparkContext("spark://127.0.0.1:7077", "test", conf)
+ 90  scala> :paste
+ 91  scala> CassandraConnector(conf).withSessionDo { session =>
+ 92      session.execute(s"CREATE KEYSPACE IF NOT EXISTS demo WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1 }")
+ 93      session.execute(s"CREATE TABLE IF NOT EXISTS demo.wordcount (word TEXT PRIMARY KEY, count COUNTER)")
+ 94      session.execute(s"TRUNCATE demo.wordcount")
+ 95    }
+ 96  sc.stop
+ 97  import com.datastax.spark.connector._
+ 98  import org.apache.spark.SparkContext
+ 99  import org.apache.spark.SparkContext._
+100  import org.apache.spark.SparkConf
+101  import com.datastax.spark.connector.cql.CassandraConnector
+102  val conf = new SparkConf(true).set("spark.cassandra.connection.host", "127.0.0.1")
+103  val sc = new SparkContext("spark://bigdata:7077", "test", conf)
+104  CassandraConnector(conf).withSessionDo { session =>
+105      session.execute(s"CREATE KEYSPACE IF NOT EXISTS demo WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1 }")
+106      session.execute(s"CREATE TABLE IF NOT EXISTS demo.wordcount (word TEXT PRIMARY KEY, count COUNTER)")
+107      session.execute(s"TRUNCATE demo.wordcount")
+108    }
+109  val rdd = sc.cassandraTable("test", "kv")
+110  import com.datastax.spark.connector._
+111  val rdd = sc.cassandraTable("test", "kv")
+112  rdd.collect
+113  val rdd = sc.cassandraTable("reponse", "temperature1")
+114  rdd.collect
+115  quit
+116  import com.datastax.spark.connector._
+117  val rdd = sc.cassandraTable("temperature", "temp1")
+118  rdd.collect
+119  import com.datastax.spark.connector._
+120  val rdd = sc.cassandraTable("temperature", "temp1")
+121  rdd.collect
+122  import com.datastax.spark.connector._
+123  CassandraConnector(sc.getConf).withSessionDo { session =>
+124      session.execute(s"CREATE KEYSPACE IF NOT EXISTS demo WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1 }")
+125      session.execute(s"CREATE TABLE IF NOT EXISTS demo.wordcount (word TEXT PRIMARY KEY, count COUNTER)")
+126      session.execute(s"TRUNCATE demo.wordcount")
+127    }
+128  import com.datastax.spark.connector.cql.CassandraConnector
+129  CassandraConnector(sc.getConf).withSessionDo { session =>
+130      session.execute(s"CREATE KEYSPACE IF NOT EXISTS demo WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1 }")
+131      session.execute(s"CREATE TABLE IF NOT EXISTS demo.wordcount (word TEXT PRIMARY KEY, count COUNTER)")
+132      session.execute(s"TRUNCATE demo.wordcount")
+133    }
+134  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("\\s+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).saveToCassandra("demo", "wordcount")
+135  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("\\s+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _)
+136  sc.collect
+137  res4.collect
+138  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("\\s+[]<>\'\"")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).collect
+139  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("\\s+[]<>\\'\\"")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).collect
+140  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("\\s+[]<>'")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).collect
+141  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).collect
+142  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).collect.saveToCassandra("demo","wordcount");
+143  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).saveToCassandra("demo","wordcount");
+144  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).foreach(println)
+145  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).foreach(x=>println(x))
+146  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _)
+147  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).collect.foreach(println(_))
+148  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).sortByKey.collect.foreach(println(_))
+149  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).sortByKey(_,_).collect.foreach(println(_))
+150  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).sortByKey().collect.foreach(println(_))
+151  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).sortByKey().filter((x,y)=> x!="")collect.foreach(println(_))
+152  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).sortByKey().filter((x,y)=> x!="").collect.foreach(println(_))
+153  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).sortByKey().filter(x => x._1!="").collect.foreach(println(_))
+154  sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).sortByKey().filter(x => x._1!="").saveToCassandra("demo","wordcount")
+155  CassandraConnector(sc.getConf).withSessionDo { session =>
+156      session.execute(s"CREATE KEYSPACE IF NOT EXISTS demo WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1 }")
+157      session.execute(s"CREATE TABLE IF NOT EXISTS demo.wordcount (word TEXT PRIMARY KEY, count COUNTER)")
+158      session.execute(s"TRUNCATE demo.wordcount")
+159    }
+160  val rdd= sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).sortByValue().filter(x => x._1!="")
+161  val rdd= sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).filter(x => x._1!="")
+162  rdd.collect.foreach(println(_))
+163  rdd.saveToCassandra("demo","wordcount")
+164  sc.cassandraTable("demo", "worldcount")
+165  sc.cassandraTable("demo", "worldcount").collect
+166  sc.cassandraTable("demo", "wordcount").collect
+167  import com.datastax.spark.connector._
+168  val rdd = sc.cassandraTable("temperature", "temp1")
+169  rdd.collect
+170  import com.datastax.spark.connector.cql.CassandraConnector
+171  CassandraConnector(sc.getConf).withSessionDo { session =>
+172      session.execute(s"CREATE KEYSPACE IF NOT EXISTS demo WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1 }")
+173      session.execute(s"CREATE TABLE IF NOT EXISTS demo.wordcount (word TEXT PRIMARY KEY, count COUNTER)")
+174      session.execute(s"TRUNCATE demo.wordcount")
+175    }
+176  val rdd= sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_ + _).filter(x => x._1!="")
+177  rdd.collect.foreach(println(_))
+178  rdd.saveToCassandra("demo","wordcount")
+179  sc.cassandraTable("demo", "wordcount").collect
+180   import com.datastax.spark.connector._
+181  val rdd = sc.cassandraTable("temperature", "temp1")
+182  rdd.collect
+183  cd
+184  sc
+185  sc.getConf.toDebugString
+186  val myNumbers = List(1,2,5,4,7,3)
+187  def cube(a: Int): Int = a*a*a
+188  myNumbers.map(x => cube(x))
+189  myNumbers.map { x => x*x*x }
+190  def even(a: Int): Boolean = { a % 2 == 0 }
+191  myNumbers.map(even(_))
+192  myNumbers.map(x=>even(x))
+193  myNumbers.filter(even(_))
+194  myNumbers.foldLeft
+195  myNumbers.foldLeft _
+196  myNumbers.foldLeft(0)(_+_)
+197  val data = 1 to 1000
+198  var filteredData = data.filter(n => (n%2==0) && (n%13==0))
+199  var filteredData = data.filter{ (_%2==0) && (_%13==0) }
+200  def multiple26(n: Int): Int { (n%2==0) && (n%13==0) }
+201  def multiple26(n: Int): Int { return (n%2==0) && (n%13==0) }
+202  def multiple26(n: Int): Int = { (n%2==0) && (n%13==0) }
+203  def multiple26(n: Int): Boolean = { (n%2==0) && (n%13==0) }
+204  var filteredData = data.filter(multiple26(_))
+205  var filteredData = data.filter((_%2==0) && (_%13==0))
+206  val parallelizedData = sc.parallelize(data)
+207  var filteredData = parallelizedData.filter((_%2==0) && (_%13==0))
+208  var filteredData = parallelizedData.filter(multiple26(_))
+209  filteredData.collect
+210  val evenDataCached = sc.parallelize(1 to 1000).filter(_%2==0).cache
+211  evenDataCached.fold(0)(_+_)
+212  sc.parallelize(1 to 1000).filter(_%2==0).fold(0)(_+_)
+213  sc.parallelize(1 to 1000).filter(_%2==0).fold(0)(_*_)
+214  sc.parallelize(1 to 1000).filter(_%2==0).fold(1)(_*_)
+215  sc.parallelize(1 to 1000).filter(_%2==0).fold(2)(_*_)
+216  sc.parallelize(1 to 10).filter(_%2==0).fold(2)(_*_)
+217  sc.parallelize(1 to 10).filter(_%2==0).fold0)(_*_)
+218  sc.parallelize(1 to 10).filter(_%2==0).fold(0)(_*_)
+219  sc.parallelize(1 to 10).filter(_%2==0).fold(1)(_*_)
+220  sc.parallelize(1 to 10).fold(1)(_*_)
+221  sc.parallelize(1 to 100).filter(_%2==0).fold(1)(_*_)
+222  sc.parallelize(1 to 10).filter(_%2==0).fold(1)(_*_)
+223  sc.parallelize(1 to 20).filter(_%2==0).fold(1)(_*_)
+224  sc.parallelize(1 to 100).filter(_%2==0).fold(1.)(_*_)
+225  sc.parallelize(1 to 100).filter(_%2==0).fold(1)(_*_: Long)
+226  sc.parallelize(1 to 100).filter(_%2==0).map(_toLong).fold(1)(_*_)
+227  sc.parallelize(1 to 100).filter(_%2==0).map(_.toLong).fold(1)(_*_)
+228  sc.parallelize(1 to 100).map(_.toLong).filter(_%2==0).fold(1)(_*_)
+229  sc.parallelize(1 to 10).map(_.toLong).filter(_%2==0).fold(1)(_*_)
+230  sc.parallelize(1 to 10).map(_.toLong).filter(_%2==0).fold(1)(_*_: Long)
+231  sc.parallelize(1 to 30).map(_.toLong).filter(_%2==0).fold(1)(_*_: Long)
+232  sc.parallelize(1 to 50).map(_.toLong).filter(_%2==0).fold(1)(_*_: Long)
+233  sc.parallelize(1 to 100).map(_.toLong).filter(_%2==0).fold(1)(_*_: Long)
+234  sc.parallelize(1 to 100).map(_.toLong).filter(_%2==0).fold(0)(_*_: Long)
+235  sc.parallelize(1 to 50).map(_.toLong).filter(_%2==0).fold(0)(_*_: Long)
+236  sc.parallelize(1 to 50).map(_.toLong).filter(_%2==0).fold(1)(_*_: Long)
+237  sc.parallelize(1 to 10).map(_.toLong).filter(_%2==0).fold(0)(_*_: Long)
+238  sc.parallelize(1 to 10).map(_.toLong).filter(_%2==0).fold(1)(_*_: Long)
+239  sc.parallelize(1 to 10).map(_.toLong).map(_.toLong).filter(_%2==0).fold(1)(_*_: Long)
+240  sc.parallelize(1 to 50).map(_.toLong).filter(_%2==0).fold(1)(_*_: Long)
+241  sc.parallelize(1 to 60).map(_.toLong).filter(_%2==0).fold(1)(_*_: Long)
+242  sc.parallelize(1 to 70).map(_.toLong).filter(_%2==0).fold(1)(_*_: Long)
+243  sc.parallelize(1 to 70).map(_.toDouble).filter(_%2==0).fold(1)(_*_: Double)
+244  sc.parallelize(1 to 100).map(_.toDouble).filter(_%2==0).fold(1)(_*_: Double)
+245  sc.parallelize(1 to 1000).map(_.toDouble).filter(_%2==0).fold(1)(_*_: Double)
+246  sc.parallelize(1 to 1000).map(_.toDouble).filter(_%2==0).fold(0)(_*_: Double)
+247  sc.parallelize(1 to 500).map(_.toDouble).filter(_%2==0).fold(0)(_*_: Double)
+248  sc.parallelize(1 to 500).map(_.toDouble).filter(_%2==0).fold(1)(_*_: Double)
+249  sc.parallelize(1 to 200).map(_.toDouble).filter(_%2==0).fold(1)(_*_: Double)
+250  sc.parallelize(1 to 300).map(_.toDouble).filter(_%2==0).fold(1)(_*_: Double)
+251  sc.parallelize(1 to 400).map(_.toDouble).filter(_%2==0).fold(1)(_*_: Double)
+252  sc.parallelize(1 to 350).map(_.toDouble).filter(_%2==0).fold(1)(_*_: Double)
+253  sc.parallelize(1 to 325).map(_.toDouble).filter(_%2==0).fold(1)(_*_: Double)
+254  sc.parallelize(1 to 312).map(_.toDouble).filter(_%2==0).fold(1)(_*_: Double)
+255  sc.parallelize(1 to 36).map(_.toDouble).filter(_%2==0).fold(1)(_*_: Double)
+256  sc.parallelize(1 to 306).map(_.toDouble).filter(_%2==0).fold(1)(_*_: Double)
+257  sc.parallelize(1 to 302).map(_.toDouble).filter(_%2==0).fold(1)(_*_: Double)
+258  sc.parallelize(1 to 301).map(_.toDouble).filter(_%2==0).fold(1)(_*_: Double)
+259  sc.parallelize(1 to 301).map(BigDecimal(_)).filter(_%2==0).fold(1)(_*_: BigDecimal)
+260  sc.parallelize(1 to 1000).map(BigDecimal(_)).filter(_%2==0).fold(1)(_*_)
+261  ls
+262  val input = sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md")
+263  val words = input.flatMap(_.split(" "))
+264  val result = words.map((_, 1)).reduceByKey(_+_)
+265  result
+266  result.collect
+267  result.map((x,y) => (y,x)).sortByKey
+268  result.map(x,y => (y,x)).sortByKey
+269  result.map((x,y) => (y,x)).sortByKey
+270  result.collect.map((x,y) => (y,x)).sortByKey
+271  result.collect.map((x: Int,y: Int) => (y,x)).sortByKey
+272  result.collect.map((x: In,y: Int) => (y,x)).sortByKey
+273  result.collect.map((x: String,y: Int) => (y,x)).sortByKey
+274  result.collect.map(x: String,y: Int => (y,x)).sortByKey
+275  result.collect.map(case (x: String,y: Int) => (y,x)).sortByKey
+276  result.collect.map {case (x: String,y: Int) => (y,x)}.sortByKey
+277  result.collect.map {case (x: String,y: Int) => y,x)}.sortByKey
+278  result.collect.map {case (x: String,y: Int) => y,x}.sortByKey
+279  result.collect.map(_.swap).sortByKey
+280  result.collect.map(_.swap).sortBy(_._0)
+281  result.collect.map(_.swap).sortBy(_._1)
+282  result.collect.map(_.swap).sortBy(-_._1)
+283  result.collect.sortBy(-_._2)
+284  result
+285  val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+286  case class Person(name: String, age: Int)
+287  val people = sc.textFile(/home/bigdata/spark-2.0.2-bin-hadoop2.7/examples/src/main/resources/people.txt").map(_.split(",")).map(p => Person(p(0), p(1).trim.toInt)).toDF
+288  val people = sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/examples/src/main/resources/people.txt").map(_.split(",")).map(p => Person(p(0), p(1).trim.toInt)).toDF
+289  people
+290  people.collect
+291  people.createOrReplaceTempView("people")
+292  people.show
+293  val teenagers = sql("SELECT * FROM people WHERE age < 20")
+294  teenagers.show
+295  import com.datastax.spark.connector._
+296  val rdd = sc.cassandraTable("temperature", "temp1")
+297  rdd.collect
+298  import com.datastax.spark.connector._
+299  rdd.collect
+300  val rdd = sc.cassandraTable("temperature", "temp1")
+301  rdd.collect
+302  import com.datastax.spark.connector.cql.CassandraConnector
+303  CassandraConnector(sc.getConf).withSessionDo { session => session.execute(s"CREATE KEYSPACE IF NOT EXISTS demo WITH REPLICATION = { 'class': 'SimpleStrategy', 'replication_factor': 1 }")
+304  session.execute(s"CREATE TABLE IF NOT EXISTS demo.wordcount (word TEXT PRIMARY KEY, count COUNTER)")
+305  session.execute(s"TRUNCATE demo.wordcount")}
+306  val rdd = sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_+_).filter(x => x._ != "")
+307  val rdd = sc.textFile("/home/bigdata/spark-2.0.2-bin-hadoop2.7/README.md").flatMap(_.split("[^a-zA-Z0-9']+")).map(word => (word.toLowerCase, 1)).reduceByKey(_+_).filter(x => x._1 != "")
+308  rdd.collect.foreach(println(_))
+309  rdd.saveToCassandra("demo", "wordcount")
+310  sc.cassandraTable("demo", "wordcount").collect

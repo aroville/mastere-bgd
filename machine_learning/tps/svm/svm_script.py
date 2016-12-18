@@ -3,7 +3,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib import rc
 from svm_source import frontiere, rand_gauss, rand_bi_gauss, plot_2d
+from time import time
+import pylab as pl
 
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import fetch_lfw_people
 from sklearn import svm
 from sklearn.svm import SVC
 from sklearn import datasets
@@ -34,13 +38,6 @@ sigma1 = [0.9, 0.9]
 sigma2 = [0.9, 0.9]
 X1, y1 = rand_bi_gauss(n1, n2, mu1, mu2, sigma1, sigma2)
 
-plt.show()
-plt.close("all")
-plt.ion()
-plt.figure(1, figsize=(15, 5))
-plt.title('First data set')
-plot_2d(X1, y1)
-
 X_train = X1[::2]
 Y_train = y1[::2].astype(int)
 X_test = X1[1::2]
@@ -58,30 +55,6 @@ score = clf.score(X_test, Y_test)
 print('Score : %s' % score)
 # display the frontiere
 
-
-def f(xx):
-    """Classifier: needed to avoid warning due to shape issues"""
-    return clf.predict(xx.reshape(1, -1))
-
-plt.figure(2)
-frontiere(f, X_train, Y_train, w=None, step=50, alpha_choice=1)
-
-
-###############################################################################
-#               Iris Dataset
-###############################################################################
-
-
-iris = datasets.load_iris()
-X = iris.data
-y = iris.target
-# TODO : split train test
-
-# fit the model
-# TODO
-
-# predict labels
-# TODO
 
 # display your results using plot_2d and frontiere
 
@@ -105,12 +78,6 @@ of the "Labeled Faces in the Wild", aka LFW_:
   _LFW: http://vis-www.cs.umass.edu/lfw/
 
 """
-
-from time import time
-import pylab as pl
-
-from sklearn.cross_validation import train_test_split
-from sklearn.datasets import fetch_lfw_people
 
 
 ####################################################################
@@ -157,9 +124,9 @@ X /= np.std(X, axis=0)
 #    train_test_split(X, y, images, test_size=0.5, random_state=0)
 # X_train, X_test, y_train, y_test = \
 #    train_test_split(X, y, test_size=0.5, random_state=0)
-
-indices = np.random.permutation(X.shape[0])
-train_idx, test_idx = indices[:X.shape[0] / 2], indices[X.shape[0] / 2:]
+n = X.shape[0]
+indices = np.random.permutation(n)
+train_idx, test_idx = indices[:int(n / 2)], indices[int(n / 2):]
 X_train, X_test = X[train_idx, :], X[test_idx, :]
 y_train, y_test = y[train_idx], y[test_idx]
 images_train, images_test = images[
@@ -167,24 +134,22 @@ images_train, images_test = images[
 
 ####################################################################
 # Quantitative evaluation of the model quality on the test set
-print "Fitting the classifier to the training set"
+print("Fitting the classifier to the training set")
 t0 = time()
 
 
-#TODO : fit a classifier, 
+# TODO : fit a classifier,
 
-
-
-print "Predicting the people names on the testing set"
+print("Predicting the people names on the testing set")
 t0 = time()
 
 # TODO : predict labels for the X_test images
 
-print "done in %0.3fs" % (time() - t0)
-print "Chance level : %s" % max(np.mean(y), 1. - np.mean(y))
-print "Accuracy : %s" % clf.score(X_test, y_test)
+print("done in %0.3fs" % (time() - t0))
+print("Chance level : %s" % max(np.mean(y), 1. - np.mean(y)))
+print("Accuracy : %s" % clf.score(X_test, y_test))
 
-#QUESTION 5 : TODO : try various values for C in the SVC function and plot the error curve
+# QUESTION 5 : TODO : try various values for C in the SVC function and plot the error curve
 
 ####################################################################
 # Look at the coefficients
@@ -220,5 +185,6 @@ plot_gallery(images_test, prediction_titles)
 pl.show()
 
 
-#QUETSION 8 : TODO : try reducing the dimension using sklearn.decomposition.RandomizedPCA and compute again an SVM classifer.
-
+# QUESTION 8 :
+# TODO : try reducing the dimension using sklearn.decomposition.RandomizedPCA and
+# compute again an SVM classifier.
