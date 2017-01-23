@@ -6,12 +6,7 @@ from sklearn.ensemble import VotingClassifier
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
-# import sys
 from sklearn.metrics.pairwise import pairwise_distances_argmin
-
-
-# f = open('log.txt', 'w+')
-# sys.stdout = f
 
 X = pd.read_csv('data/training_templates.csv', header=None)
 y = np.loadtxt('data/training_labels.txt', dtype=np.int)
@@ -76,7 +71,7 @@ def eval_clf(clf):
     return info
 
 
-knn = KNeighborsClassifier(n_neighbors=60)
+knn = KNeighborsClassifier(n_neighbors=3)
 mlp = MLPClassifier(max_iter=1000, warm_start=True, hidden_layer_sizes=(200,))
 svms = [SVC(degree=degree, kernel='poly', probability=True) for degree in [3, 4]]
 
@@ -85,6 +80,4 @@ clfs = [VotingClassifier(estimators=[
     ('mlp', mlp),
     ('svm', svm)], voting='soft') for svm in svms]
 
-Pool(8).map(eval_clf, clfs)
-
-# f.close()
+Pool().map(eval_clf, clfs)
