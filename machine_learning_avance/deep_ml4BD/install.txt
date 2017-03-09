@@ -1,5 +1,0 @@
-
- sudo apt install python-pip
- sudo pip install /home/sg/partage/protobuf-3.0.0b2-py2.py3-none-any.whl 
- sudo pip install /home/sg/partage/tensorflow-0.10.0-cp27-none-linux_x86_64.whl 
- 
