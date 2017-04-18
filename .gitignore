@@ -4,6 +4,4 @@ machine_learning/test/data
 bdd_non_relationnels/ml-1m/*.dat
 **/.ipynb_checkpoints
 **.iml
-machine_learning_avance/tensorflow/DataBases/data_1k.bin
-machine_learning_avance/tensorflow/DataBases/data_10k.bin
-machine_learning_avance/tensorflow/DataBases/data_100k.bin
+machine_learning_avance/tensorflow/DataBases
