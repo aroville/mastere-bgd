@@ -5,3 +5,8 @@ bdd_non_relationnels/ml-1m/*.dat
 **/.ipynb_checkpoints
 **.iml
 machine_learning_avance/tensorflow/DataBases
+bdd_non_relationnelles/ml-1m/
+**/__pycache__
+machine_learning_avance/tps/graphs/*.gz
+machine_learning_avance/tps/graphs/facebook/
+machine_learning_avance/tps/crf/conll2002-esp_flexcrf-test-data.dump
