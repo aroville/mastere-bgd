@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block body %}
+
+<form action="/move" method="post">
+  <input type="hidden" name="previous_score" value="{{session.score}}"/>
+  <div id="game-container">
+
+    <div id="labels-column" class="column">
+      <h2>Score </h2>
+      <h2>Where you are </h2>
+      <h2>Next article </h2>
+    </div>
+
+    <div id="values-column" class="column">
+      <h2>{{ session.score }}</h2>
+      <h2>{{ title }}</h2>
+
+      <div id="choices">
+      {% for link in links %}
+        <div class="choice">
+          <input type="radio" name="next" id="choice{{ loop.index }}"
+              value="{{ link }}" {% if loop.first %} checked {% endif %}/>
+          <label for="choice{{ loop.index }}">{{link.replace('_', ' ')}}</label>
+        </div>
+      {% endfor %}
+      </div>
+
+    </div>
+  </div>
+
+  <div id="submit-container">
+    <input type="submit" class="btn btn-danger" name="action" value="Restart">
+    <input type="submit" class="btn btn-success" name="action" value="Navigate">
+  </div>
+</form>
+
+{% endblock %}

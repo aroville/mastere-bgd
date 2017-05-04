@@ -1,0 +1,16 @@
+/* Le CSS va ici */
+body { padding: 1em; min-width: 690px; background-color: #293133; color: white; }
+h1 { text-align: center; padding-bottom: 1em; }
+input[type="text"] { width: 360px; color: black; }
+input[type="radio"] { margin-top: 5px; vertical-align: text-bottom;; }
+form { margin: 0 auto; width: 520px; }
+
+#choices { padding-top: 1em; }
+#game-container { margin: 0; }
+#submit-container { margin-top: 1em; text-align: right; }
+#values-column { padding-left: 1em; width: 45%; color: yellow; }
+#labels-column { width: 50%; text-align: right; vertical-align: top; }
+.choice { margin-top: 0.4em; }
+.choice:hover { background-color: #394143 }
+.choice label { width: 90%; margin-top: 0 }
+.column { display: inline-block; padding: 0}

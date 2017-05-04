@@ -10,3 +10,6 @@ bdd_non_relationnelles/ml-1m/
 machine_learning_avance/tps/graphs/*.gz
 machine_learning_avance/tps/graphs/facebook/
 machine_learning_avance/tps/crf/conll2002-esp_flexcrf-test-data.dump
+data_visualization/books
+machine_learning_avance/challenge
+cassandra/spark/reveal.js

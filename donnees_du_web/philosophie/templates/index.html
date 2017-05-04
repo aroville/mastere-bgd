@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>Tous les chemins mènent à la philosophie</title>
+  </head>
+  <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            {% if category == 'danger' %}
+              <strong>Error: </strong>{{ message }}
+            {% elif category == 'success' %}
+              <strong>Victory! </strong>{{ message }}
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <h1>Tous les chemins mènent à la philosophie</h1>
+
+    {% block body %}
+      <form action="/new-game" method="post">
+        <div class="input-group">
+          <input placeholder="type the name of an article on wikipedia"
+              type="text" name="title" id="start-word" class="form-control"/>
+          <span class="input-group-btn">
+            <input type="submit" class="btn btn-success" />
+          </span>
+        </div>
+      </form>
+    {% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
