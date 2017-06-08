@@ -1,27 +1,25 @@
 import sys
 from parser import Parser
 from trie import Trie
-import math
 from multiprocessing import Pool
+from time import time
 
 
 def hunt_in_page(page):
     res = []
-    content = page.content
-    while len(content) > 0:
-        cl = trie.contained_length(content, 0)
-        if math.isnan(cl) or cl == 0:
-            content = content[1:]
-            continue
-        res.append('{}\t{}'.format(page.title, content[:cl]))
-        content = content[cl:]
-    return '\n'.join(res)
+    l = len(page.content)
+    for s in range(l):
+        cl = trie.contained_length(page.content, s)
+        if cl > 0:
+            res.append(page.content[s:s+cl])
+    return '\n'.join(map(lambda e: page.title + '\t' + e, res))
 
+t0 = time()
 trie = Trie()
 trie.load(sys.argv[1])
 with Pool() as p:
     results = p.map(hunt_in_page, Parser(sys.argv[2]))
-
-results = [r for r in results if r]
 with open(sys.argv[3], 'w+') as f:
-    f.write('\n'.join(results))
+    f.write('\n'.join([r for r in results if r]))
+
+print('Finished, ellapsed: {:.2f}s'.format(time()-t0))
