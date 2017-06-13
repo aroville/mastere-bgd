@@ -1,0 +1,568 @@
+	
+		<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" media="all" href="/css/fpo_8.css" />
+<script type="text/javascript">
+var plstart = new Date();
+</script>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-174791-1']);
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="title" content="SYSTEMS AND METHODS FOR AUTOMATED TROUBLESHOOTING - WINNICK DANIEL M." />
+<meta name="description" content="The present invention relates to systems and methods for automated troubleshooting. User identification is recorded, and the problem to be solved is determined. A series of decision trees are used to " />
+<meta name="robots" content="index, follow" />
+<title>SYSTEMS AND METHODS FOR AUTOMATED TROUBLESHOOTING - WINNICK DANIEL M.</title>
+<link rel="canonical" href="http://www.freepatentsonline.com/y2015/0032669.html" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!--[if IE 6]>
+    <link href="/css/ie6.min.css" rel="stylesheet">
+<![endif]-->
+
+
+<link rel="shortcut icon" href="/images/favicon_1.ico"/>
+    <meta name='DC.identifier' content='US20150032669' />
+<meta name='DC.type' content='Patent' />
+<meta name='DC.title' content='SYSTEMS AND METHODS FOR AUTOMATED TROUBLESHOOTING' />
+<meta name='DC.creator' scheme='inventor' content='Winnick, Daniel M.' />
+<meta name='DC.contributor' scheme='assignee' content='WINNICK DANIEL M.' />
+<meta name='DC.coverage' content='US' />
+<meta name='DC.date' scheme='issued' content='2015-01-29' />
+<meta name='DC.date' scheme='submitted' content='2014-06-29' />
+<meta name='citation_patent_application_number' content='14/318671' />
+<meta name='DC.relation' scheme='references' content='US20140228005' />
+<meta name='DC.relation' scheme='references' content='US20140068330' />
+<meta name='DC.relation' scheme='references' content='US20130297544' />
+<meta name='DC.relation' scheme='references' content='US20130036062' />
+<meta name='DC.relation' scheme='references' content='US20120191629' />
+<meta name='DC.relation' scheme='references' content='US20080294423' />
+<meta name='DC.relation' scheme='references' content='US7257741' />
+<meta name='DC.relation' scheme='references' content='US20070027893' />
+<meta name='DC.relation' scheme='references' content='US20060039547' />
+<meta name='DC.relation' scheme='references' content='US20050097070' />
+<meta name='DC.relation' scheme='references' content='US20050015678' />
+<meta name='DC.relation' scheme='references' content='US20030110412' />
+<meta name='DC.relation' scheme='references' content='US20010011260' />
+</head>
+<body class="fullWidthContainer">
+
+<div>
+    <a name="top"></a>
+
+    <div class="container-fluid">
+        
+<div class="header">
+    <div class="row-fluid top">
+
+        <div class="pull-left figure">
+            <a href="/" onclick="_gaq.push(['_trackEvent', 'Header', 'Click', 'Logo']);"></a>
+        </div>
+
+
+        <div class="pull-right" style="width: 750px;">
+                        <div class="loginForm">
+                <form class="form-inline form-mini pull-right" action="/login.html" method="post">
+                    <input type="hidden" name="src" value="header_login">
+                    <input id="UID-top" name="UID" type="text" class="input-large" placeholder="Email">
+                    <input id="PWD-top" name="PWD" type="password" class="input-small" placeholder="Password">
+                    <button type="submit" class="btn btn-mini btn-primary"
+                            onclick="_gaq.push(['_trackEvent', 'Header', 'Click', 'Login']);">Login
+                    </button>
+                    <a class="btn btn-mini btn-info" href="/register.html"
+                            onclick="_gaq.push(['_trackEvent', 'Header', 'Click', 'Create']);">Sign up
+                    </a>
+                </form>
+            </div>
+            
+
+            <div class="searchForm well">
+                <form id="quick_result" name="quick_result" class="form-inline" action="/result.html" method="get"
+                      data-social-search-url="http://research.freepatentsonline.com/search/site">
+
+                    <input type="hidden" name="sort" value="relevance">
+                    <input type="hidden" name="srch" value="top">
+
+
+                    <div class="searchBox pull-left">
+                        <input type="text" name="query_txt" placeholder="Enter your search here"
+                               class="search-query" id="topSearchBox">
+
+                        <div class="btn-group">
+                            <button name="submit" class="btn btn-primary" type="submit"
+                                    onclick="_gaq.push(['_trackEvent', 'Header', 'Click', 'Search']);">Search
+                            </button>
+                            <button id="searchBox_dropdown" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="/search.html"
+                                       onclick="_gaq.push(['_trackEvent', 'Header', 'Click', 'SearchExpert']);document.cookie = 'searchTab=#expert';">
+                                    Expert Search</a>
+                                </li>
+                                <li><a href="/search.html"
+                                       onclick="_gaq.push(['_trackEvent', 'Header', 'Click', 'SearchQuick']);document.cookie = 'searchTab=#quick';">
+                                    Quick Search</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sideCollections pull-right">
+                        <ul id="header_search_top" class="borderBottom ul-mini ">
+                            <li>
+                                <label onclick="deselect_bottom_row();" class="checkbox">
+                                    <input type="checkbox" id="patents" name="patents"
+                                           value="on" checked="checked">Patents/Apps
+                                </label>
+                            </li>
+
+                            <li>
+                                <label onclick="deselect_bottom_row();" class="checkbox">
+                                    <input type="checkbox" id="npl_lit" name="npl" value="on">
+                                    Non-Patent Literature
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </form>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="row-fluid">
+        <div class="navbar navbar-inverse center" id="primaryNavBar">
+            <div class="navbar-inner">
+                <ul class="nav">
+                    <li><a href="/"></a></li>
+                    <li><a href="/search.html">SEARCH</a></li>
+                    <li>
+                        <a href="http://research.freepatentsonline.com"
+                           onclick="_gaq.push(['_trackEvent', 'Navbar', 'Click', 'Research']);">
+                            RESEARCH</a>
+                    </li>
+                    <li>
+                        <a href="http://research.freepatentsonline.com/mpep"
+                           onclick="_gaq.push(['_trackEvent', 'Navbar', 'Click', 'MPEP']);">
+                            MPEP 2.0</a>
+                    </li>
+                    <li>
+                        <a href="/tools-resources.html"
+                           onclick="_gaq.push(['_trackEvent', 'Navbar', 'Click', 'Resources']);">
+                            TOOLS &amp; RESOURCES
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://research.freepatentsonline.com/acclaimip" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Click', 'AcclaimIP']);">
+                            ACCLAIM IP
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://research.freepatentsonline.com/help"
+                           onclick="_gaq.push(['_trackEvent', 'Navbar', 'Click', 'Help']);">HELP</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+<div class="clearfix"></div>        <div class="fixed-width document-details-wrapper">
+
+            <div id="dhtmltooltip"></div>
+            
+    <style type="text/css">
+        #refs {
+            margin-left: 450px;
+            padding-left: 5px;
+            border-left: 1px solid;
+        }
+
+        #fixed_height {
+            clear: both;
+            height: 6em;
+        }
+    </style>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <form name="biblio" action="">
+        <input type="hidden" name="patent" value="20150032669"/>
+        <input type="hidden" name="title" value="SYSTEMS AND METHODS FOR AUTOMATED TROUBLESHOOTING"/>
+        <input type="hidden" name="number" value="20150032669"/>
+        <input type="hidden" name="author" value="Winnick, Daniel M. (Orinda, CA, US)"/>
+        <input type="hidden" name="author_end" value="Winnick, Daniel M. (Orinda, CA, US)"/>
+        <input type="hidden" name="year" value="2015"/>
+        <input type="hidden" name="month" value="January"/>
+        <input type="hidden" name="url" value="http://www.freepatentsonline.com/y2015/0032669.html"/>
+        <input type="hidden" name="assignee" value="WINNICK DANIEL M."/>
+        <input type="hidden" name="country" value="United States"/>
+    </form>
+
+
+
+    <!--	TITLE  -->
+    <div class="disp_doc2">
+        <div class="disp_elm_title">Title:</div>
+        <div class="disp_elm_text">
+            <font size="+1"><b>
+                    SYSTEMS AND METHODS FOR AUTOMATED TROUBLESHOOTING                </b></font>
+        </div>
+    </div>
+
+    <!--	Document Type   -->
+    <div class="disp_doc2">
+                <div class="disp_elm_text" style="clear: none;"><label class="float_left">
+                United States Patent Application 20150032669            </label>
+            
+                        <div class="disp_elm_name_kcode float_left" style="margin-left:100px;margin-top:-5px;margin-bottom:-5px;">
+                Kind
+                Code:
+            </div>
+            <div class="float_left">
+                A1            </div>
+        </div>
+        </div>
+    <div style="clear: both"></div>
+
+    <div class="disp_doc2">
+        <div class="disp_elm_text">
+            <!-- 728x90 Responsive 1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1586334167197709"
+     data-ad-slot="2270521617"
+     data-ad-format="auto">
+</ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        </div>
+    </div>
+
+    <!--	Abstract  -->
+    <div class="disp_doc2">
+        <div class="disp_elm_title">Abstract:</div>
+        <div class="disp_elm_text">
+            The present invention relates to systems and methods for automated troubleshooting. User identification is recorded, and the problem to be solved is determined. A series of decision trees are used to guide the user through troubleshooting. If the problem is resolved at any point, the event is logged as successful. This logging includes a listing of the steps taken by the user. The log may be employed to tune the decision tree for more optimal performance in the future. If no successful solutions are achieved, then the session may be forwarded to a human representative for resolution. Part of this forwarding includes classifying the event by at least one failure code. The failure code reflects the steps taken while guiding the user.         </div>
+    </div>
+
+
+    <div class="disp_doc2">
+        <div class="disp_elm_title"></div>
+
+        <div class="disp_elm_text" style="clear: none;">
+
+            <!-- Responsive sidebar -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1586334167197709"
+     data-ad-slot="5590698414"
+     data-ad-format="auto">
+</ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        </div>
+    </div>
+    <div id="fixed_height" class="disp_elm_text"></div><br id="break"/>
+    <div id="fixed_height" class="disp_elm_text"></div><br id="break"/>
+
+    <!-- Representative Image -->
+
+    <!--	Inventors  -->
+    <div class="disp_doc2">
+        <div class="disp_elm_title">Inventors:</div>
+        <div class="disp_elm_text">
+                            Winnick, Daniel M. (Orinda, CA, US)                <br/>
+                    </div>
+    </div>
+
+    <!--	Application Number  -->
+    <div class="disp_doc2">
+        <div class="disp_elm_title">Application Number:</div>
+        <div class="disp_elm_text">
+            14/318671        </div>
+    </div>
+
+    <!--    Publication Date  -->
+    <div class="disp_doc2">
+        <div class="disp_elm_title">Publication Date:</div>
+        <div class="disp_elm_text">
+            01/29/2015        </div>
+    </div>
+
+    <!--	Filing Date  -->
+    <div class="disp_doc2">
+        <div class="disp_elm_title">Filing Date:</div>
+        <div class="disp_elm_text">
+            06/29/2014        </div>
+    </div>
+
+    <!--	Export Citation  -->
+    <div class="disp_doc2">
+        <div class="disp_elm_title">Export Citation:</div>
+        <div class="disp_elm_text">
+            <a href="javascript:openpopup('/bibliography.html')"
+               onClick="_gaq.push(['_trackEvent', 'Body', 'Click', 'Biblio']);"> Click for automatic bibliography
+                generation </a>
+        </div>
+    </div>
+
+    <!--	Assignee  -->
+    <div class="disp_doc2">
+        <div class="disp_elm_title">Assignee:</div>
+        <div class="disp_elm_text">
+                            WINNICK DANIEL M.                <br/>
+                    </div>
+    </div>
+
+    <!--	Primary Classes  -->
+            <div class="disp_doc2">
+            <div class="disp_elm_title">Primary Class:</div>
+            <div class="disp_elm_text">
+                <a onClick="_gaq.push(['_trackEvent', 'Body', 'Click', 'Class']);" href="/ACC-706-11.html">706/11</a>            </div>
+        </div>
+    
+    <!--	Other Classes  -->
+            
+
+    <!--	International Classes  -->
+
+    <div class="disp_doc2">
+        <div class="disp_elm_title">International Classes:</div>
+        <div class="disp_elm_text">
+            <i><b>G06N5/04</b></i>; <i><b>G06F17/30</b></i>        </div>
+    </div>
+
+
+    <!--	Ecla Classes  -->
+
+    <!--	Field of Search  -->
+
+    <!--    View Patent Images  -->
+    <div class="disp_doc2">
+        <div class="disp_elm_title">View Patent Images:</div>
+        <div class="disp_elm_text">
+            <a href='/20150032669.pdf' rel="nofollow"
+               onclick="_gaq.push(['_trackEvent', 'Body', 'Click', 'PDF']);">Download PDF 20150032669                &nbsp;<span class="inline-pdf-image"></span></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                href="http://research.freepatentsonline.com/help#pdf-help"
+                onclick="_gaq.push(['_trackEvent', 'Body', 'Click', 'PDF_Help']);">PDF help</a>
+        </div>
+    </div>
+
+    <!--	US Patent References  -->
+<div class="disp_doc2">
+    <div class="disp_elm_title">Related US Applications:</div>
+        <div class="disp_elm_text">
+        <table cellpadding="0" cellspacing="0" class="patent_detail__table">
+        <tbody>
+        <tr><td>20090076989</td><td><a onclick="_gaq.push(['_trackEvent', 'Body', 'MLT', '1']);" href="/y2009/0076989.html">AUTOMATED CLASSIFICATION ALGORITHM COMPRISING AT LEAST ONE INPUT-INVARIANT PART</a></td><td>March, 2009</td><td>Probst et al.</td></tr><tr><td>20090319413</td><td><a onclick="_gaq.push(['_trackEvent', 'Body', 'MLT', '2']);" href="/y2009/0319413.html">SYSTEM FOR DETECTING BANKING FRAUDS BY EXAMPLES</a></td><td>December, 2009</td><td>Kalyan et al.</td></tr><tr><td>20090210369</td><td><a onclick="_gaq.push(['_trackEvent', 'Body', 'MLT', '3']);" href="/y2009/0210369.html">SYSTEMS AND METHODS OF PREDICTING RESOURCE USEFULNESS USING UNIVERSAL RESOURCE LOCATORS</a></td><td>August, 2009</td><td>Shao et al.</td></tr><tr><td>20030149677</td><td><a onclick="_gaq.push(['_trackEvent', 'Body', 'MLT', '4']);" href="/y2003/0149677.html">Knowledge automation engine for product knowledge management</a></td><td>August, 2003</td><td>Paris Jr. et al.</td></tr><tr><td>20080177685</td><td><a onclick="_gaq.push(['_trackEvent', 'Body', 'MLT', '5']);" href="/y2008/0177685.html">Artificial Psychology Dialog Player with Aging Simulation</a></td><td>July, 2008</td><td>Kadri</td></tr><tr><td>20090007220</td><td><a onclick="_gaq.push(['_trackEvent', 'Body', 'MLT', '6']);" href="/y2009/0007220.html">THEFT OF SERVICE ARCHITECTURAL INTEGRITY VALIDATION TOOLS FOR SESSION INITIATION PROTOCOL (SIP)-BASED SYSTEMS</a></td><td>January, 2009</td><td>Ormazabal et al.</td></tr><tr><td>20090328153</td><td><a onclick="_gaq.push(['_trackEvent', 'Body', 'MLT', '7']);" href="/y2009/0328153.html">USING EXCLUSION BASED SECURITY RULES FOR ESTABLISHING URI SECURITY</a></td><td>December, 2009</td><td>Chetuparambil et al.</td></tr><tr><td>20060218111</td><td><a onclick="_gaq.push(['_trackEvent', 'Body', 'MLT', '8']);" href="/y2006/0218111.html">Filtered search results</a></td><td>September, 2006</td><td>Cohen</td></tr><tr><td>20030115164</td><td><a onclick="_gaq.push(['_trackEvent', 'Body', 'MLT', '9']);" href="/y2003/0115164.html">Neural network representation for system dynamics models, and its applications</a></td><td>June, 2003</td><td>Jeng et al.</td></tr><tr><td>20080270328</td><td><a onclick="_gaq.push(['_trackEvent', 'Body', 'MLT', '10']);" href="/y2008/0270328.html">Building and Using Intelligent Software Agents For Optimizing Oil And Gas Wells</a></td><td>October, 2008</td><td>Lafferty et al.</td></tr><tr><td>20090248593</td><td><a onclick="_gaq.push(['_trackEvent', 'Body', 'MLT', '11']);" href="/y2009/0248593.html">Combining speculative physics modeling with goal-based artificial intelligence</a></td><td>October, 2009</td><td>Putzolu et al.</td></tr>        </tbody>
+    </table>
+    </div>
+</div>
+<!-- 728x90 Responsive 2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1586334167197709"
+     data-ad-slot="4118051210"
+     data-ad-format="auto">
+</ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+    <!--	Foreign Patent References:  -->
+
+    <!--		Other References  -->
+
+    <!--	Primary Examiner  -->
+
+    <!--	Assistant Examiner  -->
+
+    <!--	Attorney, Agent or Firm  -->
+
+    <!--		Parent Case Data  -->
+
+    <!--	Claims  -->
+    <div class="disp_doc2">
+        <div class="disp_elm_title">Claims:</div>
+        <div class="disp_elm_text">
+            What is claimed is:<br clear="all"/><br clear="all"/>
+                1.  A method for automated troubleshooting comprising: recording user identification; determining a problem to be solved; assessing the user's technical competency level; guiding the user through a decision tree using an automated system with a processor, wherein the decision tree is based upon the user's technical competency level; and recording steps taken, while guiding the user, as an event.                    <br clear="all"/><br clear="all"/>
+                    2.  The method of claim 1, further comprising resolving the problem and logging the event as successful, wherein the logging includes a listing of the steps taken by the user.                    <br clear="all"/><br clear="all"/>
+                    3.  The method of claim 2, wherein the listing of the steps taken by the user is used to tune the decision tree.                    <br clear="all"/><br clear="all"/>
+                    4.  The method of claim 1, further comprising elevating the user to a higher decision tree.                    <br clear="all"/><br clear="all"/>
+                    5.  The method of claim 4, further comprising exhausting the decision tree and the higher decision tree without resolving the problem.                    <br clear="all"/><br clear="all"/>
+                    6.  The method of claim 5, further comprising classifying the event by at least one failure code, wherein the failure code reflects the steps taken while guiding the user.                    <br clear="all"/><br clear="all"/>
+                    7.  The method of claim 6, further comprising elevating the problem to a human representative.                    <br clear="all"/><br clear="all"/>
+                    8.  The method of claim 7, further comprising providing the event classification to the human representative.                    <br clear="all"/><br clear="all"/>
+                    9.  The method of claim 8, wherein human representative is selected by language skills, area of expertise and skill level.                    <br clear="all"/><br clear="all"/>
+                    10.  The method of claim 1, wherein the guiding the user is done in a language chosen by the user.                    <br clear="all"/><br clear="all"/>
+                    11.  An automated troubleshooting system comprising: an interface configured to receive user identification; a system diagnostic engine configured to determine a problem to be solved; an automated solutions provider, having a processor, configured to assess the user's technical competency level, and guide the user through a decision tree wherein the decision tree is based upon the user's technical competency level; and a database configured to record steps taken, while guiding the user, as an event.                    <br clear="all"/><br clear="all"/>
+                    12.  The system of claim 11, wherein the automated solutions provider comprising resolves the problem and wherein the database logs the event as successful, wherein the logging includes a listing of the steps taken by the user.                    <br clear="all"/><br clear="all"/>
+                    13.  The system of claim 12, wherein the listing of the steps taken by the user is used to tune the decision tree.                    <br clear="all"/><br clear="all"/>
+                    14.  The system of claim 11, wherein the automated solutions provider elevates the user to a higher decision tree.                    <br clear="all"/><br clear="all"/>
+                    15.  The system of claim 14, wherein the automated solutions provider exhausts the decision tree and the higher decision tree without resolving the problem.                    <br clear="all"/><br clear="all"/>
+                    16.  The system of claim 15, wherein the automated solutions provider classifies the event by at least one failure code which is stored in the database, wherein the failure code reflects the steps taken while guiding the user.                    <br clear="all"/><br clear="all"/>
+                    17.  The system of claim 16, further comprising a human interface configured to elevate the problem to a human representative.                    <br clear="all"/><br clear="all"/>
+                    18.  The system of claim 17, wherein the human interface provides the event classification to the human representative.                    <br clear="all"/><br clear="all"/>
+                    19.  The system of claim 18, wherein the human interface selects the human representative based upon language skills, area of expertise and skill level.                    <br clear="all"/><br clear="all"/>
+                    20.  The system of claim 11, wherein the automated solutions provider guides the user in a language chosen by the user.                    <br clear="all"/><br clear="all"/>
+                            </div>
+    </div>
+
+    <!--	Description  -->
+    <div class="disp_doc2">
+        <div class="disp_elm_title">Description:</div>
+        <div class="disp_elm_text">
+            <?cross-reference-to-related-applications description="Cross Reference To Related Applications" end="lead"?><h1>CROSS REFERENCE TO RELATED APPLICATION</h1><p>This non-provisional application claims the benefit of provisional application No. 61/841,399 filed on Jun. 30, 2013, entitled “Systems and Methods for Automated Troubleshooting”, which application is incorporated herein in its entirety by this reference.</p><p>This non-provisional application also claims the benefit of provisional application No. 61/842,347 filed on Jul. 2, 2013, entitled “Systems and Methods for Automated Troubleshooting”, which application is incorporated herein in its entirety by this reference.</p><?cross-reference-to-related-applications description="Cross Reference To Related Applications" end="tail"?><?summary-of-invention description="Summary of Invention" end="lead"?><h1>BACKGROUND</h1><p>The present disclosure relates to automated and semi-automated troubleshooting for a wide variety of systems. More particularly, the present invention relates to leveraging decision trees to reduce costs incurred by companies for customer support.</p><p>Due to the fast evolution of technology, even technologically savvy individuals are often faced with problems when installing or using consumer electronic devices. Regardless of the users technical abilities, when such problems arise it can be a large frustration and time commitment to have resolved. This frustration is one leading causes of lost customers. As such, most consumer hardware and software companies, or companies who provide services that rely upon hardware or software, expend significant resources upon technical help lines. These help lines are traditionally large phone centers that have representatives with some degree of technical expertise. A customer who is experiencing a problem will call the technical help line, and be coached through diagnostic and service protocols until the problem is resolved. If resolution isn't possible over the phone, often the customer will have the option of returning the device, or an in person repair service. More recently, chat systems and remote access have enabled technical help representatives to trouble shoot user's systems more efficiently.</p><p>While such methods for troubleshooting and resolving user technical problems work generally well, there are a few acute areas for improvement. From the user's perspective, the time required to get a representative's assistance is typically onerous. Users are often put on hold for minutes, if not tens of minutes prior to being connected with a representative. Further, once in contact with the representative, often service is slow because these representatives are often juggling multiple tech service calls simultaneously to maximize efficiency on their end. All this wasted time for the user can become severely wearing. Further, there is no guarantee that the individual the user is speaking with knows the user's language, or is easy to understand. This becomes particularly important as more and more call centers are offshored, and the representatives have strong accents and reduced phone sound quality.</p><p>From the company's perspective, maintaining large call centers which are reachable at odd hours and capable of dealing with spikes in customer calls is a very expensive endeavor. In order to mitigate these costs, companies often rely upon outsourcing, and workforce reduction. However, as previously noted, the outsourcing to other countries may result in language hurdles, and the reduction in staff invariably results in longer waits or reduced service.</p><p>Traditionally, automation would be relied upon to overcome these sorts of hurdles; but for troubleshooting of technical issues this has been elusive due to the large number of variables associated with diagnosing the problem. Current belief is that a person is required to solve these sorts of technical issues.</p><p>Sometimes, however, the problems being reported into the company belong to a set of common issues. These commonalities may be due to the design features of the systems, or due to known compatibility issues with infrastructure of other devices/software. In fact, much of the time the problems being called into a tech help line are routine issues that are readily resolved. This is particularly true when the user base is less technologically proficient, such as when the product or service is consumed by the general population.</p><p>One clear example of this is with high speed internet connectivity. Companies provide broadband internet service where the user is mailed hardware for self-installation. While most of these installations are completed without any issue, there is some percentage where it is unsuccessful. By following some basic protocols the vast majority of these problems may be addressed, but still many of these disgruntled users call into customer service helplines to get the issue resolved.</p><p>Traditionally, companies have attempted to reduce the frequency of these calls by including troubleshooting guides or a recorded message with tips while the user is on wait for a representative. However, none of these systems do much to actually resolve the customers problem, and further no data is generated to help streamline the troubleshooting process.</p><p>As such an urgent need exists for systems and methods for automating the troubleshooting process. Such systems and methods will reduce companies costs associated with technical service, and provide faster and more accurate troubleshooting solutions for users.</p><h1>SUMMARY</h1><p>The present invention discloses systems and methods for the automated troubleshooting of problems common to consumer goods and services. Such systems and methods will reduce companies costs associated with technical service, and provide faster and more accurate troubleshooting solutions for users.</p><p>In some embodiments, the systems and methods for automated troubleshooting records user identification. Likewise, the problem to be solved may also be determined. The systems and methods employ a series of decision trees to guide the user through troubleshooting. The steps taken are all recorded in order to generate useful heuristics.</p><p>In some cases, the guiding steps are all performed in a language chosen by the user, and at a pace selected by the user. If the problem is resolved at any point, the event is logged as successful. This logging includes a listing of the steps taken by the user. The log may be employed to tune the decision tree for more optimal performance in the future.</p><p>If no successful solutions are achieved, the systems and methods may elevate the user to a higher decision tree. If the decision tree and the higher decision tree(s) are all exhausted without resolving the problem, then the session may be forwarded to a human representative for resolution. Part of this forwarding includes classifying the event by at least one failure code. The failure code reflects the steps taken while guiding the user, and helps the human representative narrow down issues more efficiently. In some embodiments, the human representative is selected by language skills, area of expertise and skill level.</p><p>Note that the various features of the present invention described above may be practiced alone or in combination. These and other features of the present invention will be described in more detail below in the detailed description of the invention and in conjunction with the following figures.</p><?summary-of-invention description="Summary of Invention" end="tail"?><?brief-description-of-drawings description="Brief Description of Drawings" end="lead"?><h1>BRIEF DESCRIPTION OF THE DRAWINGS</h1><p>The present invention is illustrated by way of example, and not by way of limitation, in the figures of the accompanying drawings and in which like reference numerals refer to similar elements and in which:</p><p>FIG. 1 is an example logical block diagram of a system for automated troubleshooting, in accordance with some embodiments of the present invention;</p><p>FIG. 2 is an example logical block diagram of the information technology solutions system capable of providing automated troubleshooting, in accordance with some embodiments of the present invention;</p><p>FIG. 3 is an example flow chart for the process of automated troubleshooting, in accordance with some embodiments of the present invention;</p><p>FIG. 4 is an example top-level flow chart for an example process of automated troubleshooting for internet connectivity, in accordance with some embodiments of the present invention;</p><p>FIG. 5 is an example flow chart for the modem troubleshooting decision tree, in accordance with some embodiments of the present invention;</p><p>FIG. 6 is an example flow chart for the router troubleshooting decision tree, in accordance with some embodiments of the present invention; and</p><p>FIGS. 7A and 7B illustrate example computer systems capable of executing at least portions of the disclosed embodiments.</p><?brief-description-of-drawings description="Brief Description of Drawings" end="tail"?><?detailed-description description="Detailed Description" end="lead"?><h1>DETAILED DESCRIPTION</h1><p>The present invention will now be described in detail with reference to selected preferred embodiments thereof as illustrated in the accompanying drawings. In the following description, numerous specific details are set forth in order to provide a thorough understanding of the present invention. It will be apparent, however, to one skilled in the art, that the present invention may be practiced without some or all of these specific details. In other instances, well known process steps and/or structures have not been described in detail in order to not unnecessarily obscure the present invention. The features and advantages of the present invention may be better understood with reference to the drawings and discussions that follow.</p><p>Aspects, features and advantages of exemplary embodiments of the present invention will become better understood with regard to the following description in connection with the accompanying drawing(s). It should be apparent to those skilled in the art that the described embodiments of the present invention provided herein are illustrative only and not limiting, having been presented by way of example only. All features disclosed in this description may be replaced by alternative features serving the same or similar purpose, unless expressly stated otherwise. Therefore, numerous other embodiments of the modifications thereof are contemplated as falling within the scope of the present invention as defined herein and equivalents thereto. Hence, use of absolute terms, such as, for example, “will,” “will not,” “shall,” “shall not,” “must,” and “must not,” are not meant to limit the scope of the present invention as the embodiments disclosed herein are merely exemplary.</p><p>As previously noted, the ability to provide prompt, accurate and user friendly technical support can ensure a company retains its customer base. In fact, despite the large cost that technical support services requires, most companies that sell directly to consumers have determined it is a solid investment. Thus, any system which improves upon technical support, while simultaneously reducing costs will be highly coveted.</p><p>Note that while much of the discussion contained herein relates to a system designed for use with a customer service automated phone system, it is understood that in today's world customers are communicating with companies in a wide multitude of ways. As such, the present systems and methods may be readily adapted to a wide range of platforms, such as voice phone systems, text message systems, television interfaces, internet based systems, book systems and video game console interfaces.</p><p>Thus, for the sake of clarity, while the discussion shall center on automated touchtone phone systems, it is intended that these examples are for illustrative purposes only, and are not intended to unduly limit the scope of the disclosure. For example, those skilled in the art will readily identify that a decision tree navigable by touch tones may just as readily be navigated by a game console display or via a voice recognition system. Thus, all of these permutations are intended to be covered by the instant disclosure.</p><p>The following description of some embodiments will be provided in relation to numerous subsections. The use of subsections, with headings, is intended to provide greater clarity and structure to the present invention. In no way are the subsections intended to limit or constrain the disclosure contained therein. Thus, disclosures in any one section are intended to apply to all other sections, as is applicable.</p><h1>I. Automated Troubleshooting Systems</h1><p>To facilitate discussion, FIG. 1 is an example logical block diagram of a system <b>100</b> for automated troubleshooting, in accordance with some embodiments. In this system <b>100</b> a user <b>102</b> is experiencing difficulty with a target device <b>106</b>. This target device <b>106</b> may be anything, from a new laptop, to wireless internet service, to a cell phone, to a power tool. While, clearly, the need for troubleshooting tends to be highest in the field of consumer electronics, just about any product or service could benefit from such an automated troubleshooting system.</p><p>In addition to having access to the target system/device <b>106</b>, the user <b>102</b> has access to an interface <b>104</b> which can be utilized to communicate with an information technology (IT) solutions system <b>120</b> via a network <b>110</b>. As previously mentioned, the interface <b>104</b> may be any of a touchtone phone system, voice phone systems, text message systems, television interfaces, internet based systems, book systems, video game console interfaces, and the like. Likewise, the network <b>110</b> may depend upon the platform being employed. However, most typically the network <b>110</b> will be a phone system, a cellular network, the internet or some combination thereof.</p><p>The information technology solutions system <b>120</b>, in some embodiments, may be configured to communicate with the user <b>102</b> to provide automated assistance with the problem being experienced with the target system/device <b>106</b>. In some particular instances, the target system <b>106</b> may itself have access to the network <b>110</b> (or another network), and provide back diagnostic or operability data to the information technology solutions system <b>120</b> to assist in the troubleshooting.</p><p>For example, in the context of modern television systems, the receiver and decoder box often has internet accessibility. An automated troubleshooting system could be employed where when a user <b>102</b> has an issue with the television system (for example on-demand movies are unavailable), the user <b>102</b> has the ability to call the service hotline (over a phone network <b>102</b>). The information technology solutions system <b>120</b> would then be capable of cross referencing the user's phone number with the user's account. The information technology solutions system <b>120</b> could then, in this specific example, query the receiver box via an internet backchannel (a separate network) to determine basic diagnostic data. Such data could include, for example, the receiver's internet connectivity, cable signal strength, etc. This data could then be utilized by the information technology solutions system <b>120</b> to lead the user <b>102</b> through a decision tree best suited to resolve the issue.</p><p>To expand the example further, assume the information technology solutions system <b>120</b> determines that the receiver is not connected to the internet based upon the query. Also assume that on-demand movies are streamed directly to the receiver via the internet. The information technology solutions system <b>120</b> would thus enter into automated troubleshooting to attempt to resolve the connectivity issue. In contrast, if the backchannel determines that the receiver is indeed properly connected to the internet, a different automated troubleshooting pathway may be employed.</p><p>Moving to FIG. 2, a more detailed example logical block diagram of the information technology solutions system <b>120</b> is provided. In this example diagram, logical subsystems are illustrated as separate modules coupled to one another via a central bus. In some embodiments, this may be an accurate physical description of the system architecture. However, it is also likely that one or more of these logical subsystems are in fact embodied within the same physical hardware and this connectivity is merely conceptual. Further, it can be readily envisioned where such a system exists in a distributed cloud architecture, with no set designated physical device handling each system, but rather dynamic resources fulfilling the processing needs of any given task.</p><p>Within the information technology solutions system <b>120</b> there exists a dial access connector and/or network socket <b>202</b> which enables the routing and handling of incoming communications. For example, in the previous example, a dial access connector would be capable of receiving the incoming call, and routing it through the appropriate automated troubleshooting menus. In some alternate embodiments, a network socket may receive incoming data from an API located on a computer system. Likewise, similar systems may be employed for dealing with text messaging platforms, game console systems, etc. In this manner, any of the platforms previously discussed may be well suited for usage in conjunction with the information technology solutions system <b>120</b>.</p><p>The information technology solutions system <b>120</b> also includes data banks <b>210</b> which includes, at a minimum, decision trees or other algorithms of automated troubleshooting. In addition the data banks <b>210</b> may include user account information, troubleshooting logs, equipment model information, and diagnostic information. All of this data may be employed by a system diagnostics engine <b>204</b> to generate a series of questions that will guide the user to a resolution regarding the problem. If backchannel diagnostic information is also available, as previously discussed, this data may likewise be employed by the diagnostics engine <b>204</b> to resolve the problem.</p><p>An automated solutions provider <b>206</b> may employ the decision tree(s) identified by the diagnostics engine <b>204</b> to generate a user friendly interface for the user <b>102</b> to interact with. For example, the automated solutions provider <b>206</b> may, in some embodiments, allow the user <b>102</b> to select their native language. After which, all future dialog will be completed in the language of choice, regardless of the background decision scripts being run.</p><p>In instances where there is a failure in the automated troubleshooting, it becomes necessary to involve a customer service representative. The information technology solutions system <b>120</b> thus includes a human interface system <b>208</b> which is designed to elevate the troubleshooting issue to a human operator. In some embodiments, the point of failure, language selection and general sophistication of the user <b>102</b> may be leveraged to direct the service call to a representative most capable of efficiently dealing with the issue.</p><p>For example, if the user speaks French, and is highly sophisticated, and is having issues with network connectivity of a system, the human interface system <b>208</b> may be configured to ensure the representative the call is routed to, at a minimum speaks French. Further, the human interface system <b>208</b> may direct the call to a network specialist, if available. By dividing the incoming calls into language, specialization and/or sophistication level, the automated system may be able to improve call center efficiency even if it is unable to solve the problem without human intervention.</p><p>In this manner, an automated system for troubleshooting is a marked improvement over traditional customer service solutions. An automated system allows a user <b>102</b> to get help immediately, rather than waiting in inordinately long queues for a human representative. Often users are embarrassed by their lack of technical knowledge, and therefore avoid calling into a help line. An automated system eliminates this embarrassment but allowing the user the ability to solve “stupid” issues with a sense of anonymity, and only reaching a human representative for more serious issues. Further, the pace of the automated troubleshooting may be guided entirely by the user <b>102</b>. Thus there is no sense of pressure felt by the user to complete the diagnostic rapidly.</p><p>From the company's perspective, an automated system of this sort allows for reduced customer service staffing. Further, those issues that persist past the automated system can be targeted to representatives most apt to resolve them. Thus the efficiency is realized via faster and more efficient resolution time by the human operators. Thus, the presently disclosed system and methods of automated troubleshooting results in an improved cost structure while simultaneously improving service.</p><h1>II. Method for Automated Troubleshooting</h1><p>FIG. 3 is a flow chart illustrating an exemplary method for automated troubleshooting, in accordance with some embodiments, shown generally at <b>300</b>. The process begins with the user connecting with the information technology solutions system (at <b>302</b>) via the network and an interface. As previously discussed, the interface and network may include any multitude of systems, such as a phone and a phone network, a computer system and the internet, or a cell phone and a cellular network, for example.</p><p>The user's information is sent to the information technology solutions system for identification purposes (at <b>304</b>). This identifying information may include an account number, a phone number, IP address, or the like. The user also provides what type of problem they are experiencing (at <b>306</b>). This selection process may be augmented, as previously discussed, by backchannel data in circumstances where the problem device/system has internet or other connectivity, and is configured for remote diagnostics.</p><p>The information technology solutions system then assesses the technical competency level of the user, and uses this assessment to guide the user through a series of questions, driven by decision trees generated to identify most common issues, in order to troubleshoot the issue (at <b>308</b>). User's technical assessment may be accomplished via self-assessment where the user inputs his or her comfort with technology, or may take the form of a learning based guide, where user selections that suggest the user is more or less technologically capable feeds back to determine what the next steps should be. For example, if the user selects a basic issue and cannot solve basic problems such as identifying the router, then the decision tree utilized to guide the user may be significantly more simplistic than for, say, a user who is having a network socket issue.</p><p>Next, a determination is made if the problem was resolved (at <b>310</b>), and if so the event is logged as a success (at <b>312</b>). This logging may include an analysis of which steps were taken by the user to get to a successful resolution. These successful event logs may be employed to fine tune the decision trees in order to maximize the resolution of issues within the least number of steps for future users.</p><p>If the problem was not solved, however, the system may classify the gathered information (at <b>314</b>). This classification may include listing a series of failure codes for steps taken to resolve the issues, but were ultimately unsuccessful. These failure logs may be particularly helpful for a representative dealing with the issue later in order to reduce the need for redundant operations by the user. For example, if a user has network connectivity issues, and the system instructs the user to reboot the modem, and this step fails to resolve the issue, then if the problem is elevated to a representative, this modem reboot procedure will be listed in the failure logs. The representative will then not need to have the user go through this step again, thereby saving everyone time, and reducing overall frustration.</p><p>After the gathered information has been classified, another query is made on whether there is a higher level of automated troubleshooting available (at <b>316</b>). If so the system elevates the troubleshooting within the decision tree matrix to the next higher level (at <b>318</b>) and repeats the procedure from the point of guiding the user through troubleshooting of the problem (at <b>308</b>).</p><p>However, if all levels of the decision tree are exhausted for the problem, then the system may elevate the troubleshooting session to the human interface system (at <b>320</b>). In this step, a representative well suited to resolve the problem if selected and the classified failure and identification information may be provided to the human representative for efficient resolution to the problem.</p><h1>III. Examples</h1><p>Now that the general system and method for automated troubleshooting has been provided, an example troubleshooting flow chart example will be provided to illustrate how such systems and methods may be employed within the very real-world issue of a home wireless network not being accessible to a user. Note that the following example is intended to be entirely illustrative in nature, and does not limit the scope of the present disclosure in any way.</p><p>As previously noted the user contacts the automated troubleshooting system, provides some information that may be used to identify the user, and selects the problem as “no wireless internet” from a list of common problems, in this example. The system would next guide the user through a troubleshooting dialog to generate data on the problem and, hopefully, resolve the issue. This troubleshooting process is detailed in the example FIGS. 4-6 which disclose a process the system may lead the user through.</p><p>In the process <b>400</b> of FIG. 4, the user is using a phone system to interact with the automated troubleshooting system. The phone number the user is calling from is logged and used as identification (at <b>402</b>). In some cases, this number may be referenced back to a registry to determine the user's actual identification or account information. The automated troubleshooting prompts the user to perform a system reboot (at <b>404</b>) in an attempt to resolve the issue. The user is queried whether the problem was solved (at <b>406</b>) through the reboot. If so, the steps taken are recoded and the event is logged as a success. If not, the process gets elevated to a model troubleshooting decision tree (at <b>408</b>).</p><p>FIG. 5 provides a more detailed explanation of the process for modem troubleshooting. In this example process, the user is asked if the modem location is known (at <b>502</b>). If not, the modem is described to the user (at <b>504</b>) and then the user is once again asked if the modem location is known (at <b>506</b>). If the user is still unable to find the modem, then the session records a failure code (at <b>516</b>) indicating that the modem was never found.</p><p>However, if at either point the user indicates the location of the modem is known, then the user can be prompted to cycle the modem's power (at <b>508</b>). The system then can inquire if there is a status change (at <b>510</b>). If so, the problem may have been resolved and this is checked for. If not, the user may also be prompted to reboot the computer system (at <b>512</b>).</p><p>The modem troubleshooting can result in success, failure or an elevation to another level of troubleshooting. For example, if the modem is not identified, then the process fails entirely. If the reboot or cycling of modem power resolves the issue, then there is a success. However, if the modem is rebooted without a change in status, then the process elevates the troubleshooting to another level.</p><p>Returning to FIG. 4, the process undergoes a series of queries to determine if the troubleshooting resolved the issue (at <b>410</b>) or if there was a failure (at <b>412</b>). If either is true, then the event is logged as a success or failure as described above. However, if nether is true, then the process may be elevated to a router troubleshooting decision tree (at <b>414</b>).</p><p>FIG. 6 provides a more detailed explanation of the process for router troubleshooting. In this example process, the user is asked if the router location is known (at <b>602</b>). In this example, the user can indicate that if or if not the router location is known, or whether the user is unsure of the router location.</p><p>An unsure answer, or if the user does not know the router location results in the router being described to the user (at <b>604</b>). The user is once again asked if the router location is known (at <b>606</b>). If the user is still unable to find the router, then the session records a failure code (at <b>618</b>) indicating that the router was never found.</p><p>However, if at either point the user indicates the location of the router is known, then the user is be prompted to cycle the router's power (at <b>608</b>). The system then can inquire if there is a status change (at <b>610</b>). If so, the problem may have been resolved and this is checked for. If not, the user may also be prompted to reboot the computer system (at <b>612</b>).</p><p>After the reboot, the user is again asked if there is a status change (at <b>614</b>). If so, the problem may have been resolved and this is checked for. If not, the process inquires with the user if the router lights are on (at <b>616</b>). Regardless of router lights being on this stage in the process results in the generation of an failure code (at <b>618</b>), however, different failure codes are generated depending upon the router's light status.</p><p>Returning to FIG. 4, the process may determine if any measure taken under the router troubleshooting process resolved the issue (at <b>416</b>). If so, the event is logged as successful. However, if not, there is no higher levels of the troubleshooting matrix, and the session is classified accordingly.</p><p>During this classification, all failure codes that were generated are collected and exported along with the identification to a human representative in order to help resolve the problem. For an internet connectivity problem like the one just provided, the failure codes that could be generated may include some of the following: <ul id="ul0001" list-style="none"><li id="ul0001-0001" num="0064">Failed01*=user couldn't find modem</li><li id="ul0001-0002" num="0065">Failed02*=the modem didn't have any lights lit</li><li id="ul0001-0003" num="0066">Failed03*=the modem had lights on, no separate router was present, user rebooted computer before and after modem reboot.</li><li id="ul0001-0004" num="0067">Failed04*=user couldn't find modem's power cable</li><li id="ul0001-0005" num="0068">Failed05*=user couldn't find router, modem had lights on, separate router was present, user rebooted computer before and after modem reboot.</li><li id="ul0001-0006" num="0069">Failed06*=user couldn't find the power cable of router, modem had lights on, separate router was present, user rebooted computer before and after modem reboot.</li><li id="ul0001-0007" num="0070">Failed07*=both the modem and router had lights on, separate router was present, user rebooted computer before and after modem reboot and after the router reboot</li><li id="ul0001-0008" num="0071">Failed08*=the router had all lights off, modem had lights on, separate router was present, user rebooted computer before and after modem reboot and after the router reboot</li></ul> </p><p>Clearly, the example automated process disclosed herein is one of a number of ways in which internet connectivity troubleshooting can be performed. As noted, by logging successful resolutions, and the steps undertaken to reach these resolutions, the troubleshooting decision trees can be modified to most optimally resolve these sorts of problems in future cases.</p><h1>IV. System Embodiments</h1><p>FIGS. 7A and 7B illustrate a Computer System <b>700</b>, which is suitable for implementing embodiments of the present invention. FIG. 7A shows one possible physical form of the Computer System <b>700</b>. Of course, the Computer System <b>700</b> may have many physical forms ranging from a printed circuit board, an integrated circuit, and a small handheld device up to a huge super computer. Computer system <b>700</b> may include a Monitor <b>702</b>, a Display <b>704</b>, a Housing <b>706</b>, a Disk Drive <b>708</b>, a Keyboard <b>710</b>, and a Mouse <b>712</b>. Disk <b>714</b> is a computer-readable medium used to transfer data to and from Computer System <b>700</b>.</p><p>FIG. 7B is an example of a block diagram for Computer System <b>700</b>. Attached to System Bus <b>720</b> are a wide variety of subsystems. Processor(s) <b>722</b> (also referred to as central processing units, or CPUs) are coupled to storage devices, including Memory <b>724</b>. Memory <b>724</b> includes random access memory (RAM) and read-only memory (ROM). As is well known in the art, ROM acts to transfer data and instructions uni-directionally to the CPU and RAM is used typically to transfer data and instructions in a bi-directional manner. Both of these types of memories may include any suitable of the computer-readable media described below. A Fixed Disk <b>726</b> may also be coupled bi-directionally to the Processor <b>722</b>; it provides additional data storage capacity and may also include any of the computer-readable media described below. Fixed Disk <b>726</b> may be used to store programs, data, and the like and is typically a secondary storage medium (such as a hard disk) that is slower than primary storage. It will be appreciated that the information retained within Fixed Disk <b>726</b> may, in appropriate cases, be incorporated in standard fashion as virtual memory in Memory <b>724</b>. Removable Disk <b>714</b> may take the form of any of the computer-readable media described below.</p><p>Processor <b>722</b> is also coupled to a variety of input/output devices, such as Display <b>704</b>, Keyboard <b>710</b>, Mouse <b>712</b> and Speakers <b>730</b>. In general, an input/output device may be any of: video displays, track balls, mice, keyboards, microphones, touch-sensitive displays, transducer card readers, magnetic or paper tape readers, tablets, styluses, voice or handwriting recognizers, biometrics readers, motion sensors, brain wave readers, or other computers. Processor <b>722</b> optionally may be coupled to another computer or telecommunications network using Network Interface <b>740</b>. With such a Network Interface <b>740</b>, it is contemplated that the Processor <b>722</b> might receive information from the network, or might output information to the network in the course of performing the above-described multi-merchant tokenization. Furthermore, method embodiments of the present invention may execute solely upon Processor <b>722</b> or may execute over a network such as the Internet in conjunction with a remote CPU that shares a portion of the processing.</p><p>In addition, embodiments of the present invention further relate to computer storage products with a computer-readable medium that have computer code thereon for performing various computer-implemented operations. The media and computer code may be those specially designed and constructed for the purposes of the present invention, or they may be of the kind well known and available to those having skill in the computer software arts. Examples of computer-readable media include, but are not limited to: magnetic media such as hard disks, floppy disks, and magnetic tape; optical media such as CD-ROMs and holographic devices; magneto-optical media such as floptical disks; and hardware devices that are specially configured to store and execute program code, such as application-specific integrated circuits (ASICs), programmable logic devices (PLDs) and ROM and RAM devices. Examples of computer code include machine code, such as produced by a compiler, and files containing higher level code that are executed by a computer using an interpreter.</p><p>In sum, systems and methods for automated troubleshooting are provided. While a number of specific examples have been provided to aid in the explanation of the present invention, it is intended that the given examples expand, rather than limit the scope of the invention. Although sub-section titles have been provided to aid in the description of the invention, these titles are merely illustrative and are not intended to limit the scope of the present invention.</p><p>While the systems and methods have been described in functional terms, embodiments of the present invention may include entirely hardware, entirely software or some combination of the two. Additionally, manual performance of any of the methods disclosed is considered as disclosed by the present invention.</p><p>While this invention has been described in terms of several preferred embodiments, there are alterations, permutations, modifications and various substitute equivalents, which fall within the scope of this invention. It should also be noted that there are many alternative ways of implementing the methods and systems of the present invention. It is therefore intended that the following appended claims be interpreted as including all such alterations, permutations, modifications, and various substitute equivalents as fall within the true spirit and scope of the present invention.</p><?detailed-description description="Detailed Description" end="tail"?>        </div>
+    </div>
+
+    <br clear="all"/><br/>
+
+
+    <br clear="all"/><br/>
+    <div class="disp_doc2">
+
+            <div class="disp_doc2">
+        <div class="disp_elm_title">&nbsp;</div>
+        <div class="disp_elm_text" style="height:70px;">
+    
+    <b>Previous Patent:</b> <a onClick="_gaq.push(['_trackEvent', 'Bottom', 'Click', 'Previous']);" href="/y2015/0032668.html">INFORMATION PROCESSING APPARATUS, INFORMATION PROCESSING METHOD, PROGRAM, AND INFORMATION PROCESSING...</a><br clear='all'/><br clear='all'/><b>Next Patent:</b> <a onClick="_gaq.push(['_trackEvent', 'Bottom', 'Click', 'Next']);" href="/y2015/0032670.html">Avatar Having Optimizing Artificial Intelligence for Identifying and Providing Relationship and Well...</a>
+            </div>
+        </div>
+        <br clear="all"/><br/>
+</div>
+    <br clear="all"/><br/>
+        </div>
+
+        <div class="pageFooter">
+    <div class="row-fluid top">
+        <div class="figure"></div>
+        <ul>
+            <li>
+                <a href="/" onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Home']);">Home</a>
+            </li>
+            <li>
+                <a href="/search.html" onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Search']);">Search</a>
+            </li>
+            <li>
+                <a href="/services.html" onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Services']);">Services</a>
+            </li>
+            <li>
+                <a href="http://research.freepatentsonline.com"
+                   onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Data']);">Communities</a>
+            </li>
+            <li>
+                <a href="http://research.freepatentsonline.com/help"
+                   onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Help']);">Help</a>
+            </li>
+            <li>
+                <a href="/contact.html"
+                   onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Contact']);">Contact us</a></li>
+            <li>
+                <a href="http://research.freepatentsonline.com/help#advertising-on-site"
+                   onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Advertise']);">Advertise on this Site</a>
+            </li>
+        </ul>
+        <ul class="socialIcons">
+            <li><a href="https://twitter.com/FPOCommunity" class="twitter"
+                   onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'social twitter']);"></a></li>
+            <li><a href="http://www.linkedin.com/groups/FPO-Community-4524797" class="linkedin"
+                   onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'social linkedin']);"></a></li>
+            <li><a href="/contact.html" class="email"
+                   onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'social email']);"></a></li>
+        </ul>
+    </div>
+    <div class="row-fluid bot">
+        <p>
+            &copy; 2004-2017 FreePatentsOnline.com. All rights reserved.
+            <a href="/privacy.html" onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Privacy']);">Privacy Policy
+                &amp; Terms of Use.</a>
+            <a href="http://www.sumobrainsolutions.com/">A SumoBrain Solutions Company</a>
+        </p>
+    </div>
+</div>    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    _gaq.push(['_setCustomVar', 2, 'User Origin Source', 'no referer', 2]);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+<script type="text/javascript">
+    function trackPageLoad() {
+        var plend = new Date();
+        var plload = plend.getTime() - plstart.getTime();
+        var pn = document.location.pathname;
+        var lc = 'slow';
+        var la = new Array(200, 300, 400, 500, 1000, 1500, 2000, 2500, 5000);
+        for (var i = 0, len = la.length; i < len; i++) {
+            if (plload <= la[i]) {
+                lc = String(la[i]);
+                break;
+            }
+        }
+        _gaq.push(['onLoadTracker._setAccount', 'UA-174791-5']);
+        _gaq.push(['onLoadTracker._trackEvent', "LoadTime", lc, pn, plload]);
+        }
+</script>
+<script type="text/javascript">
+    try {
+        if (window.onload != null) {
+            var oldOnload = window.onload;
+            window.onload = function (e) {
+                oldOnload(e);
+                trackPageLoad();
+            };
+        }
+        else {
+            window.onload = trackPageLoad();
+        }
+    } catch (err) {
+    }
+</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="/js/fpo_2.js"></script>
+
+<!--[if IE 6]>
+    <script type="text/javascript" src="/js/ie6_compat.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+    (function () {
+        var hasPlaceholder = 'placeholder' in document.createElement('input');
+        if (!hasPlaceholder) {
+            $.cachedScript("/js/jquery.placeholder.min.js").success(function (script, textStatus) {
+                $('input, textarea').placeholder();
+            });
+        }
+    })();
+</script>
+</body>
+</html>
