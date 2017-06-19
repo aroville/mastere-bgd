@@ -7,8 +7,7 @@ from time import time
 
 def hunt_in_page(page):
     res = []
-    l = len(page.content)
-    for s in range(l):
+    for s in range(len(page.content)):
         cl = trie.contained_length(page.content, s)
         if cl > 0:
             res.append(page.content[s:s+cl])
