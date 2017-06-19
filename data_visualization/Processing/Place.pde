@@ -14,6 +14,7 @@ class Place implements Comparable {
     return int(map(this.latitude, minY, maxY, height-20, 20));
   }
   
+
   float ln(float d, float t) {
     return log(t+d);
   }
@@ -41,7 +42,6 @@ class Place implements Comparable {
   void draw() {
     int d = density();
     int p = population();
-    //fill(255, 255-d, 0, 90 + d/2.);
     fill(255, 255-d, 0, 180);
     ellipse(x(), y(), p, p);
   }

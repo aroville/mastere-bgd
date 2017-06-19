@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <title>Tous les chemins mènent à la philosophie</title>
   </head>
   <body>
@@ -24,7 +24,7 @@
       {% endif %}
     {% endwith %}
 
-    <h1>Tous les chemins mènent à la philosophie</h1>
+    <h1 id="home-title">Tous les chemins mènent à la philosophie</h1>
 
     {% block body %}
       <form action="/new-game" method="post">
@@ -39,5 +39,6 @@
     {% endblock %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/static/js/app.js"></script>
   </body>
 </html>

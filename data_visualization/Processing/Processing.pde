@@ -68,6 +68,7 @@ void drawLabel() {
   } catch (Exception ex) {}
 }
 
+
 void drawLegend() {
   for (int i = 0; i < 255; i++) {
     fill(255, 255-i, 0);
@@ -90,6 +91,7 @@ void drawLegend() {
   Integer maxPopInt = Math.round(maxPop);
   text("Population: "+minPopInt+" - "+maxPopInt, 420, 816);
 }
+
 
 void readData() {
   //String[] lines = loadStrings("https://perso.telecom-paristech.fr/eagan/class/igr204/data/population.tsv");
